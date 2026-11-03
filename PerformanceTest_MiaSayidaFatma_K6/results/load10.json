@@ -1,0 +1,276 @@
+{
+    "root_group": {
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {
+            "01 Login": {
+                "name": "01 Login",
+                "path": "::01 Login",
+                "id": "7b83dd3b4d85e5a1621aff237a6192e3",
+                "groups": {},
+                "checks": {
+                        "login HTTP 200": {
+                            "path": "::01 Login::login HTTP 200",
+                            "id": "3b18416078df8c71a02c8d86e0455ab1",
+                            "passes": 85,
+                            "fails": 0,
+                            "name": "login HTTP 200"
+                        },
+                        "login userId dari response": {
+                            "passes": 85,
+                            "fails": 0,
+                            "name": "login userId dari response",
+                            "path": "::01 Login::login userId dari response",
+                            "id": "000e133e77845e3b86a4b2927f60bd8c"
+                        },
+                        "login token tersedia": {
+                            "name": "login token tersedia",
+                            "path": "::01 Login::login token tersedia",
+                            "id": "55d3123dee864daf58755b1b2f14d031",
+                            "passes": 85,
+                            "fails": 0
+                        }
+                    }
+            },
+            "02 Generate Token": {
+                "id": "0c8a8110433db9b59a56d20db8af87e2",
+                "groups": {},
+                "checks": {
+                        "token HTTP 200": {
+                            "fails": 0,
+                            "name": "token HTTP 200",
+                            "path": "::02 Generate Token::token HTTP 200",
+                            "id": "947847f2edab7075acc5e8fee13e0be9",
+                            "passes": 85
+                        },
+                        "token tersedia": {
+                            "name": "token tersedia",
+                            "path": "::02 Generate Token::token tersedia",
+                            "id": "6a386d029a4302f54069f25f490a3669",
+                            "passes": 85,
+                            "fails": 0
+                        },
+                        "token status Success": {
+                            "fails": 0,
+                            "name": "token status Success",
+                            "path": "::02 Generate Token::token status Success",
+                            "id": "369154783d5aecc9903cc41ddc9b0787",
+                            "passes": 85
+                        }
+                    },
+                "name": "02 Generate Token",
+                "path": "::02 Generate Token"
+            },
+            "03 Browse Books": {
+                "checks": {
+                    "browse HTTP 200": {
+                        "fails": 0,
+                        "name": "browse HTTP 200",
+                        "path": "::03 Browse Books::browse HTTP 200",
+                        "id": "46fc1e0c9e74cb02036bd92503b146bb",
+                        "passes": 85
+                    },
+                    "browse punya ISBN": {
+                        "id": "ec8e9e01eca5baa7bb50327039c4ace8",
+                        "passes": 85,
+                        "fails": 0,
+                        "name": "browse punya ISBN",
+                        "path": "::03 Browse Books::browse punya ISBN"
+                    }
+                },
+                "name": "03 Browse Books",
+                "path": "::03 Browse Books",
+                "id": "ee36191e6e86e3941e7ec509376ca3b8",
+                "groups": {}
+            },
+            "04 Select Book": {
+                "checks": {
+                    "select HTTP 200": {
+                        "name": "select HTTP 200",
+                        "path": "::04 Select Book::select HTTP 200",
+                        "id": "4fc36f13b689f029a2afbf3a44fb0501",
+                        "passes": 85,
+                        "fails": 0
+                    },
+                    "select ISBN sesuai": {
+                        "passes": 85,
+                        "fails": 0,
+                        "name": "select ISBN sesuai",
+                        "path": "::04 Select Book::select ISBN sesuai",
+                        "id": "02ba3345b266dd27b10d762b8ebf6635"
+                    }
+                },
+                "name": "04 Select Book",
+                "path": "::04 Select Book",
+                "id": "5f00ef6f0d0912c85d0c14a424b71f25",
+                "groups": {}
+            },
+            "05 Cleanup Collection": {
+                "name": "05 Cleanup Collection",
+                "path": "::05 Cleanup Collection",
+                "id": "bb42b7a2fd1523874b2c027f2a6adc44",
+                "groups": {},
+                "checks": {
+                        "cleanup HTTP 204": {
+                            "name": "cleanup HTTP 204",
+                            "path": "::05 Cleanup Collection::cleanup HTTP 204",
+                            "id": "d50dce0c6d17cc9b3b87a02879b7e8a5",
+                            "passes": 85,
+                            "fails": 0
+                        }
+                    }
+            },
+            "06 Add Book": {
+                "checks": {
+                    "add HTTP 201": {
+                        "name": "add HTTP 201",
+                        "path": "::06 Add Book::add HTTP 201",
+                        "id": "5447f84a4c5dd64edcc794348dfb7bf6",
+                        "passes": 85,
+                        "fails": 0
+                    },
+                    "add ISBN sesuai": {
+                        "path": "::06 Add Book::add ISBN sesuai",
+                        "id": "f5dd7dafd658db532a2d113abd0dc468",
+                        "passes": 85,
+                        "fails": 0,
+                        "name": "add ISBN sesuai"
+                    }
+                },
+                "name": "06 Add Book",
+                "path": "::06 Add Book",
+                "id": "91c803b3b7b31f57e6fb5d435bee155d",
+                "groups": {}
+            }
+        },
+        "checks": {},
+        "name": ""
+    },
+    "metrics": {
+        "vus_max": {
+            "value": 10,
+            "min": 10,
+            "max": 10
+        },
+        "group_duration": {
+            "med": 661.5613,
+            "max": 8556.197,
+            "p(90)": 2786.19747,
+            "p(95)": 4103.136044999997,
+            "avg": 1137.2358013725498,
+            "min": 176.3943
+        },
+        "http_req_blocked": {
+            "avg": 11.872406666666667,
+            "min": 0,
+            "med": 0,
+            "max": 1561.103,
+            "p(90)": 0,
+            "p(95)": 0
+        },
+        "http_req_tls_handshaking": {
+            "p(95)": 0,
+            "avg": 8.240232156862746,
+            "min": 0,
+            "med": 0,
+            "max": 1374.0522,
+            "p(90)": 0
+        },
+        "data_received": {
+            "count": 680193,
+            "rate": 3605.9977461158246
+        },
+        "vus": {
+            "min": 1,
+            "max": 10,
+            "value": 1
+        },
+        "http_req_connecting": {
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 3.581004509803922,
+            "min": 0,
+            "med": 0,
+            "max": 192.6597
+        },
+        "data_sent": {
+            "rate": 1134.7505686843408,
+            "count": 214046
+        },
+        "http_req_duration{expected_response:true}": {
+            "avg": 1125.0301860784311,
+            "min": 176.3943,
+            "med": 623.2985,
+            "max": 8556.197,
+            "p(90)": 2738.814150000001,
+            "p(95)": 4102.4103849999965
+        },
+        "http_req_sending": {
+            "min": 0,
+            "med": 0,
+            "max": 1.2354,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0.019242352941176464
+        },
+        "http_req_receiving": {
+            "p(95)": 9.56818,
+            "avg": 1.9256219607843148,
+            "min": 0,
+            "med": 0.5164,
+            "max": 14.4909,
+            "p(90)": 7.041570000000002
+        },
+        "iterations": {
+            "count": 85,
+            "rate": 0.4506218211887583
+        },
+        "http_req_duration": {
+            "p(90)": 2738.814150000001,
+            "p(95)": 4102.4103849999965,
+            "avg": 1125.0301860784311,
+            "min": 176.3943,
+            "med": 623.2985,
+            "max": 8556.197,
+            "thresholds": {
+                "p(95)<3000": true
+            }
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 510,
+            "thresholds": {
+                "rate<0.05": false
+            },
+            "value": 0
+        },
+        "http_reqs": {
+            "count": 510,
+            "rate": 2.70373092713255
+        },
+        "http_req_waiting": {
+            "avg": 1123.0853217647057,
+            "min": 170.2436,
+            "med": 621.22805,
+            "max": 8548.9241,
+            "p(90)": 2737.977460000001,
+            "p(95)": 4101.134324999996
+        },
+        "checks": {
+            "passes": 1105,
+            "fails": 0,
+            "thresholds": {
+                "rate>0.95": false
+            },
+            "value": 1
+        },
+        "iteration_duration": {
+            "min": 13576.194,
+            "med": 18671.9573,
+            "max": 27284.8859,
+            "p(90)": 22249.721740000005,
+            "p(95)": 22700.20756,
+            "avg": 18788.553841176476
+        }
+    }
+}
