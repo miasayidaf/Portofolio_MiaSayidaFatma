@@ -44,7 +44,12 @@ Untuk Windows CMD, tersedia alternatif file `.bat` pada folder `scripts`, sepert
 ## Hasil Pengujian
 Hasil running dapat dilihat pada terminal k6, meliputi **response time, throughput, HTTP request, dan error rate**. Untuk menyimpan ringkasan dalam JSON, gunakan opsi `--summary-export` seperti pada contoh baseline.
 
-## Catatan
-- DemoQA merupakan server publik. Pengujian dengan beban tinggi, stress, atau soak hanya boleh dilakukan jika sudah mendapat izin.
-- `CLEANUP_BEFORE_ADD=true` menghapus **seluruh koleksi buku akun pengujian** sebelum menambahkan buku. Gunakan hanya akun khusus testing.
-- Jika pengujian gagal, periksa akun, token login, respons API, dan kemungkinan pembatasan request.
+## Recording Hasil Performance Testing
+
+Saya juga telah menyediakan **screen recording** yang menampilkan proses eksekusi performance testing menggunakan **Grafana k6** melalui terminal Visual Studio Code.
+
+**Nama file:** `PerformanceTest_MiaSayidaFatma_K6_Recording.webm`
+
+Recording tersebut mencakup proses menjalankan script performance testing serta hasil eksekusi pengujian yang ditampilkan pada terminal
+
+Silakan mengunduh dan membuka file recording `PerformanceTest_MiaSayidaFatma_K6_Recording.webm` untuk melihat proses running dan hasil performance testing secara langsung.
