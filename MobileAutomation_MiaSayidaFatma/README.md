@@ -1,27 +1,40 @@
-# MobileAutomation_MiaSayidaFatma — Eraspace Login
+# MobileAutomation_MiaSayidaFatma — Login Eraspace
 
-## Soal 3 — Automation Script Mobile
+## Automation Script Mobile
 
-Mobile login automation for **Eraspace Android**, using the **same coding approach** as the uploaded `WebAutomation_MiaSayidaFatma`: JavaScript/CommonJS, WebdriverIO, Cucumber BDD/Gherkin, Page Object Model, step definitions, Node `assert`, and spec reporter. Mobile device automation uses Appium + UiAutomator2 instead of Chrome browser automation.
+Proyek automation testing untuk fitur **Login pada aplikasi Eraspace Android**, menggunakan pendekatan yang sama seperti proyek `WebAutomation_MiaSayidaFatma`:
 
-## Test cases
+- **Bahasa Pemrograman:** JavaScript (CommonJS)
+- **Automation Framework:** WebdriverIO
+- **BDD Framework:** Cucumber BDD/Gherkin
+- **Design Pattern:** Page Object Model (POM)
+- **Step Definitions:** Implementasi langkah-langkah pengujian
+- **Assertion:** Node.js `assert`
+- **Test Reporter:** Spec Reporter
+- **Mobile Automation:** Appium + UiAutomator2
 
-| TC ID | Type | Test scenario | Expected result |
+Automation mobile menggunakan **Appium dan UiAutomator2** pada Android, bukan automation browser Chrome.
+
+## Test Cases
+
+| TC ID | Tipe | Test Scenario | Expected Result |
 |---|---|---|---|
-| 1.1 | Negative | Invalid username and password, tap Login | Login fails; visible error message |
-| 1.2 | Positive | Valid username and password, tap Login | Login succeeds; homepage, menu list, account name, points displayed |
+| 1.1 | Negative | Login menggunakan username dan password tidak valid, kemudian klik Login | Login gagal dan sistem menampilkan pesan error |
+| 1.2 | Positive | Login menggunakan username dan password valid, kemudian klik Login | Login berhasil; halaman utama, daftar menu, nama akun, dan jumlah poin ditampilkan |
 
-Feature: `features/eraspace/login.feature`.
+**Lokasi Feature File:** `features/eraspace/login.feature`
 
-## Prerequisites (Windows)
+## Persiapan (Windows)
 
-1. Install Node.js, Android Studio/Android SDK Platform Tools, Java JDK, and Appium 2.
-2. Start an Android emulator or connect an Android phone with USB debugging enabled. Check `adb devices`.
-3. Install Eraspace from the Play Store on the device, or obtain its APK **legitimately**. Use Android for this project (not iOS).
-4. Have an **authorized test account** with valid credentials and a logged-out app session.
-5. Inspect the actual Eraspace app using **Appium Inspector** to determine resource IDs / accessibility IDs for all login and post-login elements. UI selectors **cannot be verified** from the web-automation ZIP or screenshot.
+1. Install Node.js, Android Studio/Android SDK Platform Tools, Java JDK, dan Appium 2.
+2. Jalankan Android Emulator atau hubungkan perangkat Android dengan USB Debugging aktif. Periksa menggunakan `adb devices`.
+3. Install Eraspace dari Google Play Store atau gunakan APK yang diperoleh secara sah. Proyek ini ditujukan untuk Android, bukan iOS.
+4. Siapkan akun pengujian resmi dengan kredensial valid dan pastikan aplikasi dalam kondisi logout.
+5. Gunakan **Appium Inspector** untuk mengidentifikasi `resource-id` atau `accessibility ID` pada halaman Login dan setelah login. Selector UI belum dapat diverifikasi dari proyek automation web atau screenshot.
 
-## Install
+## Instalasi
+
+Jalankan perintah berikut di terminal folder proyek:
 
 ```bash
 npm install
@@ -29,33 +42,56 @@ npx appium driver install uiautomator2
 cp .env.example .env
 ```
 
-Edit `.env`: supply `APP_PACKAGE` (the real installed Eraspace package ID) **or** `APP_PATH` (APK path), `VALID_USERNAME`, and `VALID_PASSWORD`. Do not commit `.env`. Use `adb shell pm list packages` to discover the installed app package.
+Edit file `.env` dengan mengisi:
 
-Update `config/locators.json` with actual selectors from Appium Inspector. Existing selectors are **illustrative candidates**, not confirmed selectors. For best reliability, prefer Android `resource-id` or accessibility ID over visible text. If the home screen requires tapping an account tab to reveal name or points, adjust page object navigation to match the actual app.
+- `APP_PACKAGE`: Package ID Eraspace yang terpasang, **atau**
+- `APP_PATH`: Lokasi file APK Eraspace.
+- `VALID_USERNAME`: Username akun pengujian yang valid.
+- `VALID_PASSWORD`: Password akun pengujian yang valid.
 
-## Run
+Untuk mencari package ID aplikasi terpasang:
 
-Open **two terminals** from the project folder.
+```bash
+adb shell pm list packages
+```
 
-Terminal 1:
+## Cara Menjalankan Automation Testing
+
+Buka **dua terminal** dari folder proyek di Visual Studio Code.
+
+### Terminal 1 — Appium Server
+
 ```bash
 npm run appium
 ```
 
-Terminal 2:
+### Terminal 2 — Eksekusi Pengujian
+
+Periksa konfigurasi dan perangkat:
+
 ```bash
 npm run doctor
+```
+
+Jalankan Negative Login:
+
+```bash
 npm run test:login:negative
+```
+
+Jalankan Positive Login:
+
+```bash
 npm run test:login:positive
-# or both scenarios (requires handling logout/reset between tests)
+```
+
+Jalankan kedua skenario:
+
+```bash
 npm run test:login
 ```
 
-The positive test changes login state; to rerun or run both scenarios reliably, log out before the next scenario or implement an app-specific logout/reset using confirmed locators. `noReset: true` intentionally avoids deleting app data.
-
-Screenshots are saved to `evidence/` after each scenario (not committed by default). The `spec` reporter prints test steps and failures to terminal.
-
-## Project structure
+## Struktur Folder Project
 
 ```text
 MobileAutomation_MiaSayidaFatma/
@@ -72,11 +108,3 @@ MobileAutomation_MiaSayidaFatma/
 ├── wdio.conf.js
 └── package.json
 ```
-
-## Important limitations
-
-This is an **executable automation project scaffold**, not a verified passing run on Eraspace. The user-provided source project is **web automation** and does not contain Eraspace mobile selectors, app package, or authorized valid credentials. Those must be supplied and verified on an actual Android device. UI flows may vary by app version and login method (password vs OTP); if OTP is required, the scenario must be adapted to an authorized test flow. **Do not fabricate test results.**
-
-## GitHub
-
-Create a GitHub repository and upload the project files, excluding `.env`, APK, `node_modules`, and private account data. Include real screenshots/results only after running the test. Repository URL must be added by the owner; it cannot be generated locally.
